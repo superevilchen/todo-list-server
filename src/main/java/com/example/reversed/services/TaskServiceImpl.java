@@ -63,13 +63,12 @@ public class TaskServiceImpl implements TaskService{
 
         //TODO - this is the same as update, so need to export it to util
 
-        if (!taskRepository.existsById(id)){
-            throw new TaskException(NOT_EXISTS);
-        }
+//        if (!taskRepository.existsById(id)){
+//            throw new TaskException(NOT_EXISTS);
+//        }
 
-        if (!userRepository.existsById(userID)) {
-            throw new TaskException(ExceptionState.NOT_EXISTS);
-        }
+        User user = userRepository.findById(userID).orElseThrow(() -> new TaskException(ExceptionState.NOT_EXISTS));
+        user.getTasks().remove(taskRepository.findById(id).orElseThrow(() -> new TaskException(NOT_EXISTS)));
 
         taskRepository.deleteById(id);
     }
