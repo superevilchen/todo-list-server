@@ -8,6 +8,7 @@ public class TaskException extends Exception{
     private ExceptionState state;
 
     public TaskException(ExceptionState state) {
+        super(state.getDescription());
         this.state = state;
     }
 }

@@ -25,7 +25,7 @@ public class Task {
 
 //    @NotBlank
 //    @NotNull
-    @Column(unique = true, updatable = false)
+//    @Column(unique = true, updatable = false)
     private String title;
 
     private String description;
@@ -37,11 +37,14 @@ public class Task {
 //    @Column(name="WhenToDo")
     private Date whenToDo;
 
+    @ManyToOne
+    private User user;
+
     public Task(String title, String description, Group groupType, Date whenToDo) {
-        this(0, title, description, groupType, whenToDo);
+        this(0, title, description, groupType, whenToDo, null);
     }
 
     public Task(String title, Group groupType, Date whenToDo) {
-        this(0, title, null, groupType, whenToDo);
+        this(0, title, null, groupType, whenToDo, null);
     }
 }

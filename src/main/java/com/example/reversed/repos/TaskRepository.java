@@ -38,4 +38,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query(value = "DELETE FROM tasks WHERE when_to_do < now() - interval 30 DAY;", nativeQuery = true)
     void deleteExpired();
 
+    List<Task> findByUserId(int userId);
+
+    Optional<Task> findByIdAndUserId(long id, int userId);
 }
