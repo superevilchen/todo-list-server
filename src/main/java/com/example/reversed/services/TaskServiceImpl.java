@@ -11,6 +11,7 @@ import com.example.reversed.repos.TaskRepository;
 import com.example.reversed.repos.UserRepository;
 import com.example.reversed.security.TokenManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -79,6 +80,7 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
+    @Cacheable("tasks")
     public List<TaskDTO> getAll(int userID) {
         return mapper.mapToObjectList(taskRepository.findByUserId(userID));
     }

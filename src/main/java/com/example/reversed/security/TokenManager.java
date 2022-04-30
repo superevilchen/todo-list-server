@@ -68,4 +68,12 @@ public class TokenManager {
         tokens.entrySet().removeIf(token -> token.getValue().getIssuedAt().plusMinutes(30).isBefore(LocalDateTime.now()));
     }
 
+    public boolean isTokenExists(UUID token){
+        return tokens.keySet().contains(token);
+    }
+
+    public boolean isAuthorizedFor(UUID token, ClientType type){
+        return tokens.get(token).getClientType().equals(type);
+    }
+
 }

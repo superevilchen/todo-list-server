@@ -17,17 +17,14 @@ import java.util.UUID;
 public class AdminController {
 
     private final AdminService adminService;
-    private final TokenManager tokenManager;
 
     @GetMapping("users")
-    public int countUsers(@RequestHeader("Authorization") UUID token) throws TaskException {
-        tokenManager.isAdmin(token);
+    public int countUsers() throws TaskException {
         return adminService.countUsers();
     }
 
     @GetMapping("tasks")
-    public int countTasks(@RequestHeader("Authorization") UUID token) throws TaskException {
-        tokenManager.isAdmin(token);
+    public int countTasks() throws TaskException {
         return adminService.countTasks();
     }
 }
