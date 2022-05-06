@@ -10,9 +10,4 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableScheduling
 @EnableSwagger2
 public class TasksConfiguration {
-
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
 }

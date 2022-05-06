@@ -9,7 +9,6 @@ import com.example.reversed.exceptions.TaskException;
 import com.example.reversed.mappers.Mapper;
 import com.example.reversed.repos.TaskRepository;
 import com.example.reversed.repos.UserRepository;
-import com.example.reversed.security.TokenManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,6 @@ public class TaskServiceImpl implements TaskService{
 
     private final TaskRepository taskRepository;
     private final Mapper mapper;
-    private final TokenManager tokenManager;
     private final UserRepository userRepository;
 
     @Override
@@ -61,12 +59,6 @@ public class TaskServiceImpl implements TaskService{
     @Override
     public void delete(long id, int userID) throws TaskException {
 
-        //TODO - this is the same as update, so need to export it to util
-
-//        if (!taskRepository.existsById(id)){
-//            throw new TaskException(NOT_EXISTS);
-//        }
-
         User user = userRepository.findById(userID).orElseThrow(() -> new TaskException(ExceptionState.NOT_EXISTS));
         user.getTasks().remove(taskRepository.findById(id).orElseThrow(() -> new TaskException(NOT_EXISTS)));
 
@@ -74,14 +66,18 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
+    public List<TaskDTO> getAll(int userID) {
+        return mapper.mapToObjectList(taskRepository.findByUserId(userID));
+    }
+
+
+    // currently not in use in the api
+
+    @Override
     public TaskDTO getOne(long id) throws TaskException {
         return mapper.mapToObject(taskRepository.findById(id).orElseThrow(() -> new TaskException(NOT_EXISTS)));
     }
 
-    @Override
-    public List<TaskDTO> getAll(int userID) {
-        return mapper.mapToObjectList(taskRepository.findByUserId(userID));
-    }
 
     @Override
     public TaskDTO getByTitle(String title) throws TaskException {

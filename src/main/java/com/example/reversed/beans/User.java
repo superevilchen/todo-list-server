@@ -3,7 +3,6 @@ package com.example.reversed.beans;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,13 +23,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private ClientType clientType;
 
-    @Singular
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Task> tasks;
 
     public User(String email, String password, ClientType clientType) {
-        this.email = email;
-        this.password = password;
-        this.clientType = clientType;
+        this(0, email, password, clientType, null);
     }
 }

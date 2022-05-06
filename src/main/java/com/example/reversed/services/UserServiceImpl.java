@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findTop1ByEmail(email).orElseThrow(() -> new TaskException(ExceptionState.NOT_EXISTS));
 
         Info info = new Info(user.getId(), email, user.getClientType(), LocalDateTime.now());
-//        Info info = new Info()
 
         return tokenManager.addToken(info);
     }
