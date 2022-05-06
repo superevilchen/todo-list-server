@@ -10,6 +10,4 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     boolean existsByEmail(String email);
 
     Optional<User> findTop1ByEmail(String email);
-
-    boolean existsByEmailAndPassword(String email, String password);
 }

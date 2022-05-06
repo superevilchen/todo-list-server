@@ -49,12 +49,10 @@ public class TaskControllerAdvice {
         return new ApiException("invalid input", e.getMessage());
     }
 
-    // TODO - fix this sql handler
-
     @ExceptionHandler(value = {SQLException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiException handle(SQLException e){
-        return new ApiException("oy oy oy", e.getMessage());
+        return new ApiException("Todo Application", e.getMessage());
     }
 
 

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+// currently not implemented
+
 @RestController
 @RequestMapping("api/v1/todolist/admin/")
 @RequiredArgsConstructor

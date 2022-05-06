@@ -13,11 +13,7 @@ public enum ExceptionState {
     NOT_EXISTS("Couldn't get what you're looking for", HttpStatus.NOT_FOUND),
     ALREADY_EXISTS("You're trying to override an existing task", HttpStatus.CONFLICT),
     INVALID_TOKEN("Invalid token", HttpStatus.UNAUTHORIZED);
-
-
-    //TODO - add more and validations to the service
-
-    // TODO - now - there is no spring validation running because error.. fix it
+    
 
     private String description;
     private HttpStatus status;

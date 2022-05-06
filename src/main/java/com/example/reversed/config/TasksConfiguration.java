@@ -12,9 +12,4 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableAspectJAutoProxy
 public class TasksConfiguration {
-
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
 }

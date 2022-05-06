@@ -39,6 +39,4 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     void deleteExpired();
 
     List<Task> findByUserId(int userId);
-
-    Optional<Task> findByIdAndUserId(long id, int userId);
 }

@@ -6,9 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Entity
@@ -23,9 +20,6 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @NotBlank
-//    @NotNull
-//    @Column(unique = true, updatable = false)
     private String title;
 
     private String description;
@@ -33,8 +27,6 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Group groupType;
 
-//    @Future
-//    @Column(name="WhenToDo")
     private Date whenToDo;
 
     @ManyToOne

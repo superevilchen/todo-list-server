@@ -30,7 +30,6 @@ public class TaskController {
     }
 
     @PutMapping("{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
     public TaskDTO update(@PathVariable long id, @RequestBody @Valid TaskDTO task, @RequestHeader("Authorization") UUID token) throws TaskException {
         return taskService.update(id, task, tokenManager.getUserId(token));
     }
@@ -41,14 +40,16 @@ public class TaskController {
         taskService.delete(id, tokenManager.getUserId(token));
     }
 
-    @GetMapping("{id}")
-    public TaskDTO getOne(@PathVariable long id) throws TaskException {
-        return taskService.getOne(id);
-    }
-
     @GetMapping
     public List<TaskDTO> getAll(@RequestHeader("Authorization") UUID token) throws TaskException {
         return taskService.getAll(tokenManager.getUserId(token));
+    }
+
+    // currently not in use:
+
+    @GetMapping("{id}")
+    public TaskDTO getOne(@PathVariable long id) throws TaskException {
+        return taskService.getOne(id);
     }
 
     @GetMapping("title")
