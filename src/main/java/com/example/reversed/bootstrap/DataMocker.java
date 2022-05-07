@@ -33,7 +33,7 @@ public class DataMocker implements CommandLineRunner {
         User user3 = new User("admin@a.com", "1234", ClientType.ADMIN);
 
         userRepository.save(user1);
-        userRepository.save(user2);
+//        userRepository.save(user2);
         userRepository.save(user3);
 
         TaskDTO task1 =
@@ -61,7 +61,7 @@ public class DataMocker implements CommandLineRunner {
 
         taskService.add(task1, 1);
         taskService.add(task2, 1);
-        taskService.add(task3, 2);
+//        taskService.add(task3, 2);
 
 //        void update(long id, Task task) throws TaskException;
 
@@ -71,7 +71,7 @@ public class DataMocker implements CommandLineRunner {
 
 //        void delete(long id) throws TaskException;
 
-        taskService.delete(2, 1);
+//        taskService.delete(2, 1);
 
 //        Task getOne(long id) throws TaskException;
 
@@ -82,32 +82,32 @@ public class DataMocker implements CommandLineRunner {
         System.out.println(taskService.getAll(1));
 
 //        Task getByTitle(String title) throws TaskException;
-
-        System.out.println(taskService.getByTitle("task3"));
-
-//        List<Task> getByGroup(Group group);
-
-        System.out.println(taskService.getByGroup(Group.REACT));
-
-//        List<Task> getBefore(Date date);
-
-        System.out.println(taskService.getBefore(Date.valueOf(LocalDate.of(2050, 1, 1))));
-
-//        List<Task> getAfter(Date date);
-
-        System.out.println(taskService.getAfter(Date.valueOf(LocalDate.of(2022, 10, 10))));
-
-//        int totalTasks();
-
-        System.out.println(taskService.totalTasks());
-
-//        List<Task> sortByNearest();
-
-        System.out.println(taskService.sortByNearest());
-
-//        List<Task> sortByFarthest();
-
-        System.out.println(taskService.sortByFarthest());
+//
+//        System.out.println(taskService.getByTitle("task3"));
+//
+////        List<Task> getByGroup(Group group);
+//
+//        System.out.println(taskService.getByGroup(Group.REACT));
+//
+////        List<Task> getBefore(Date date);
+//
+//        System.out.println(taskService.getBefore(Date.valueOf(LocalDate.of(2050, 1, 1))));
+//
+////        List<Task> getAfter(Date date);
+//
+//        System.out.println(taskService.getAfter(Date.valueOf(LocalDate.of(2022, 10, 10))));
+//
+////        int totalTasks();
+//
+//        System.out.println(taskService.totalTasks());
+//
+////        List<Task> sortByNearest();
+//
+//        System.out.println(taskService.sortByNearest());
+//
+////        List<Task> sortByFarthest();
+//
+//        System.out.println(taskService.sortByFarthest());
 
 //        List<Task> getAllExpired();
 

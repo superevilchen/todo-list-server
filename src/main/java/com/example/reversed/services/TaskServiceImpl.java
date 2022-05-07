@@ -10,7 +10,6 @@ import com.example.reversed.mappers.Mapper;
 import com.example.reversed.repos.TaskRepository;
 import com.example.reversed.repos.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -75,14 +74,8 @@ public class TaskServiceImpl implements TaskService{
     // currently not in use in the api
 
     @Override
-<<<<<<< HEAD
-    @Cacheable("tasks")
-    public List<TaskDTO> getAll(int userID) {
-        return mapper.mapToObjectList(taskRepository.findByUserId(userID));
-=======
     public TaskDTO getOne(long id) throws TaskException {
         return mapper.mapToObject(taskRepository.findById(id).orElseThrow(() -> new TaskException(NOT_EXISTS)));
->>>>>>> docker
     }
 
 
