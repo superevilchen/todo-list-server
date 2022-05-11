@@ -30,11 +30,17 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- PostgreSQL -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>mysql</groupId>-->
+<!--			<artifactId>mysql-connector-java</artifactId>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -75,12 +81,6 @@
 			<artifactId>aspectjweaver</artifactId>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.heroku.agent</groupId>
-			<artifactId>heroku-javaagent</artifactId>
-			<version>2.0</version>
-			<scope>runtime</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -90,7 +90,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${project.parent.version}</version>
 				<configuration>
-					<jvmArguments>-Xmx256m</jvmArguments>
+<!--					<jvmArguments>-Xmx256m</jvmArguments>-->
 					<layers>
 						<enabled>true</enabled>
 						<includeLayerTools>true</includeLayerTools>
@@ -101,6 +101,23 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>2.0.3</version>
+				<configuration>
+					<appName>task-application-cv</appName>
+					<includeTarget>false</includeTarget>
+					<includes>
+						<include>${project.build.directory}/${project.build.finalName}.jar</include>
+					</includes>
+					<jdkVersion>${java.version}</jdkVersion>
+					<processTypes>
+						<web>java $JAVA_OPTS -jar
+							${project.build.directory}/${project.build.finalName}.jar</web>
+					</processTypes>
 				</configuration>
 			</plugin>
 			<plugin>

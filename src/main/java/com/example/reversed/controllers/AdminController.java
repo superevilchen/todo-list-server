@@ -4,10 +4,7 @@ import com.example.reversed.exceptions.TaskException;
 import com.example.reversed.security.TokenManager;
 import com.example.reversed.services.AdminService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -16,6 +13,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/todolist/admin/")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class AdminController {
 
     private final AdminService adminService;

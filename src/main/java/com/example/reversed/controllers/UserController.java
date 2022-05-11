@@ -14,6 +14,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/todolist/user/")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class UserController {
 
     private final UserService userService;

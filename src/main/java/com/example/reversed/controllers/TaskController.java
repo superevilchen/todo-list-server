@@ -18,6 +18,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/todolist/")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class TaskController {
 
     private final TaskService taskService;
